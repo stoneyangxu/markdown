@@ -1,0 +1,69 @@
+# 1. Openlayers框架结构
+- 目的是为了让客户端能够更好的加载地图、操作地图
+- 核心类包括：
+    - Map
+    - Layer
+    - Source
+    - View
+## Map
+> The core component of OpenLayers is the map (ol.Map). It is rendered to a target container (e.g. a div element on the web page that contains the map). All map properties can either be configured at construction time, or by using setter methods, e.g. setTarget().
+- ol.Map是用来容纳整个地图的容易，绑定在页面上的`<div></div>`元素上
+## View
+> ol.Map is not responsible for things like center, zoom level and projection of the map. Instead, these are properties of an ol.View instance.
+- ol.Map不会处理地图中心点、层级、投影坐标系等属性，这些都是ol.View对象的属性
+- 如果没有指定坐标系，默认使用墨卡托球星坐标`Spherical Mercator (EPSG:3857)`
+- zoom用来指定地图的分辨率
+## Source
+- Openlayers使用ol.source.Source对象来加载地图显示用的矢量图或瓦片图
+## Layer
+- layer是地图数据的可视化显示
+    - ol.layer.Tile 用于加载预处理的、通过zoom和分辨率组织的瓦片图片
+    - ol.layer.Image 用于加载指定图片
+    - ol.layer.Vector 用于加载矢量数据
+## 地图初始化时的组装
+
+```js
+
+<div id="map" style="width: 100%, height: 400px"></div>
+<script>
+  new ol.Map({
+    layers: [
+      new ol.layer.Tile({source: new ol.source.OSM()})
+    ],
+    view: new ol.View({
+      center: [0, 0],
+      zoom: 2
+    }),
+    target: 'map'
+  });
+</script>
+```
+
+# 2. 相比v2版本，v3的主要区别
+
+- 将地图图层与数据源分离，并且将投影、分辨率、中心点等抽离为视图View
+- 将地图交互操作相关抽离为交互控件Interactions
+- 使用叠加层Overlays来承载地图标注（Marker, Popup）
+- 优化了空间几何结构
+- 地图渲染机制不同，将地图图层数据渲染、矢量要素渲染分离
+
+# 3. Openlayers 工作原理
+## （1）数据组织
+
+![](./_image/2017-03-02-00-18-40.jpg)
+
+![](./_image/2017-03-02-00-23-06.jpg)
+
+## （2）数据解析
+- 图片集
+    - Image
+    - Tile
+- 矢量数据源
+    - 通过ol.format.Feature类等子类进行矢量数据等解析
+## （3）数据渲染
+```flow
+url: 通过URL获取数据
+anylize: 解析器解析数据
+rander: 渲染器进行渲染
+interactions: 
+```

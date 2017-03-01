@@ -1,0 +1,14 @@
+# 1. Openlayers框架结构
+- 目的是为了让客户端能够更好的加载地图、操作地图
+- 核心类包括：
+    - Map
+    - Layer
+    - Source
+    - View
+## Map
+> The core component of OpenLayers is the map (ol.Map). It is rendered to a target container (e.g. a div element on the web page that contains the map). All map properties can either be configured at construction time, or by using setter methods, e.g. setTarget().
+Map是用来容纳整个地图的容易，绑定在页面上的`<div></div>`元素上
+## View
+> ol.Map is not responsible for things like center, zoom level and projection of the map. Instead, these are properties of an ol.View instance.
+- Map不会处理地图中心点、层级、投影坐标系等属性，这些都是View对象的属性
+- 

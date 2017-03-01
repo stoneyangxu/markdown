@@ -1,0 +1,7 @@
+# 1. Openlayers框架结构
+- 目的是为了让客户端能够更好的加载地图、操作地图
+- 核心类包括：
+    - Map
+    - Layer
+    - Source
+    - View
