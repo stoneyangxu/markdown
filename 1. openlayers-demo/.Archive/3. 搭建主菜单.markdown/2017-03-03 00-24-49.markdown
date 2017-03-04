@@ -1,0 +1,32 @@
+# 1. 构造基本的页边布局，实现Components
+
+![](./_image/2017-03-02-23-55-51.jpg)
+# 2. 安装BootStrap
+- 使用npm安装组建
+
+![](./_image/2017-03-03-00-07-19.jpg)
+- html页面引入样式
+```html
+    <link href="node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" type="text/css">
+```
+# 3. NavComponent中实现菜单的展现
+
+- 定义简单的数据结构
+![](./_image/2017-03-03-00-15-13.jpg)
+- 页面加入ng2的循环
+```html
+<div class="nav">
+    <div *ngFor="let nav of navList;"
+         class="nav-item">
+      <p>{{nav}}</p>
+    </div>
+</div>
+```
+- 页面展示如下
+
+![](./_image/2017-03-03-00-18-39.jpg)
+- 查看菜单样式的时候发现带有浏览器默认的边框，使用Normalize.css重置全局样式
+```shell
+$ npm 
+```
+

@@ -1,0 +1,4 @@
+# 1. 主容器使用container-fruid，横向占满整个屏幕
+```html
+    <main class="container-fruid"></main>
+```

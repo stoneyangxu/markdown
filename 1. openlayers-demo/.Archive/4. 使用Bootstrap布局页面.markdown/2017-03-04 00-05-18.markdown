@@ -1,0 +1,15 @@
+# 1. 主容器使用container-fruid，横向占满整个屏幕
+```html
+    <main class="container-fruid"></main>
+```
+
+![](./_image/2017-03-04-00-03-28.jpg)
+
+# 2. 设置菜单和展示区域宽度
+```html
+<header></header>
+<menu class="col-md-3"></menu>
+<div class="col-md-9">
+  <router-outlet></router-outlet>
+</div>
+```
